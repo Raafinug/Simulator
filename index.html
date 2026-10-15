@@ -267,7 +267,7 @@
   /* ---------- Pilihan program ---------- */
   .tracks-row { display: flex; gap: 12px; align-items: stretch; margin: 44px 0 18px; }
   .tracks {
-    position: relative; flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 6px;
+    position: relative; flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; padding: 6px;
     border: 1px solid var(--line); border-radius: 14px; background: var(--surface); backdrop-filter: blur(10px);
   }
   .track {
@@ -285,8 +285,8 @@
   .track[aria-selected="true"] .track-ico { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
   .track:hover .track-ico svg { animation: pop .9s ease-in-out infinite; }
   .track-text { flex: 1; min-width: 0; }
-  .track-text b { display: block; font-size: 17px; font-weight: 800; letter-spacing: -.01em; }
-  .track-text small { font-size: 12.5px; color: var(--muted); }
+  .track-text b { display: block; font-size: 16px; font-weight: 800; letter-spacing: -.015em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .track-text small { font-size: 12.5px; color: var(--muted); display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   /* penanda geser dipasang lewat JS agar cocok untuk jumlah tombol berapa pun */
   .track-indicator, .role-indicator {
     position: absolute; z-index: 0; left: 6px; top: 6px; width: 0; height: 0;
@@ -397,7 +397,7 @@
             mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='11' width='16' height='10' rx='2'/%3E%3Cpath d='M8 11V7a4 4 0 0 1 8 0v4'/%3E%3C/svg%3E") center/contain no-repeat;
   }
   @keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
-  @media (max-width: 980px) {
+  @media (max-width: 1100px) {
     .tracks { grid-template-columns: 1fr 1fr; }
     .track-text small { display: none; }
   }
@@ -550,7 +550,7 @@
 <div class="wrap">
   <section class="hero">
     <div>
-      <span class="tag"><b>3 Program</b> E-PPAT, Smart Contract &amp; E-Corp · panduan langkah demi langkah</span>
+      <span class="tag"><b>4 Program</b> E-PPAT, Smart Contract, E-Corp &amp; Tentakel · panduan langkah demi langkah</span>
       <h1>Pusat Tutorial <em>Aplikasi</em></h1>
       <div class="typer"><span class="prompt">$</span> pelajari cara <span id="typed"></span><span class="caret"></span></div>
     </div>
@@ -612,6 +612,11 @@
         <span class="track-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></svg></span>
         <span class="track-text"><b>E-Corp</b><small id="ecorpCount">7 episode</small></span>
         <span class="badge ok" id="badge-ecorp">Terkunci</span>
+      </button>
+      <button class="track" role="tab" data-track="tentakel" aria-selected="false">
+        <span class="track-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0-6 6v3.5"/><path d="M12 3a6 6 0 0 1 6 6v3.5"/><circle cx="10" cy="9" r="1"/><circle cx="14" cy="9" r="1"/><path d="M6 12.5c0 2-1.5 2.5-1.5 4.5M9.5 13c0 2.5-1 3.5-1 6M14.5 13c0 2.5 1 3.5 1 6M18 12.5c0 2 1.5 2.5 1.5 4.5"/></svg></span>
+        <span class="track-text"><b>Tentakel</b><small>Sedang disiapkan</small></span>
+        <span class="badge soon">Segera</span>
       </button>
       <span class="track-indicator" id="trackIndicator"></span>
     </nav>
@@ -741,6 +746,44 @@
       </div>
       <main class="grid" id="ecGrid"></main>
       <div class="empty" id="ecEmpty">&gt; 0 hasil. Coba kata kunci lain.</div>
+    </div>
+  </section>
+
+  <!-- ===== Tentakel (segera hadir) ===== -->
+  <section class="track-panel" id="panel-tentakel" hidden>
+    <div class="soon-card">
+      <div class="soon-art" aria-hidden="true">
+        <svg viewBox="0 0 220 180">
+          <g class="crane" stroke="var(--ink-2)" stroke-width="2" fill="none" stroke-linecap="round">
+            <path d="M40 170V30M40 30h140M40 50l20-20M60 30v20M180 30v8"/>
+            <path d="M40 30l-14 14h14"/>
+            <g class="hook"><line x1="150" y1="30" x2="150" y2="70"/><rect x="138" y="70" width="24" height="16" rx="3" fill="var(--accent-2)" stroke="none"/></g>
+          </g>
+          <g class="floors">
+            <rect class="floor" x="96"  y="150" width="90" height="18" rx="2"/>
+            <rect class="floor" x="96"  y="130" width="90" height="18" rx="2"/>
+            <rect class="floor" x="96"  y="110" width="90" height="18" rx="2"/>
+            <rect class="floor ghost" x="96" y="90" width="90" height="18" rx="2"/>
+          </g>
+          <g class="g1"><circle cx="70" cy="140" r="16" fill="none" stroke="var(--accent)" stroke-width="3" stroke-dasharray="6 4"/><circle cx="70" cy="140" r="5" fill="none" stroke="var(--accent)" stroke-width="3"/></g>
+          <g class="g2"><circle cx="58" cy="112" r="10" fill="none" stroke="var(--accent-2)" stroke-width="3" stroke-dasharray="4 3"/></g>
+          <line x1="10" y1="170" x2="210" y2="170" stroke="var(--line-strong)" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="soon-text">
+        <span class="badge soon big">Segera Hadir</span>
+        <h2>Tutorial <em>Tentakel</em> sedang dibangun</h2>
+        <p>Modul pembelajaran Tentakel sedang kami siapkan. Begitu rilis, episodenya akan muncul di halaman ini dengan format yang sama seperti program lain.</p>
+        <div class="build">
+          <div class="build-head"><span>build: tentakel-tutorial</span><span class="build-status">in progress</span></div>
+          <div class="build-bar"><span></span></div>
+          <div class="build-log" id="tentakelLog"></div>
+        </div>
+        <button class="btn-ghost" data-goto="eppat">← Lihat program lain dulu</button>
+      </div>
+    </div>
+    <div class="grid skeleton" aria-hidden="true">
+      <div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div>
     </div>
   </section>
 
@@ -1393,7 +1436,18 @@ function geserSemua() {
 }
 
 /* ============ Program & peran ============ */
-let currentTrack = "eppat", currentRole = "pengguna", scLogTimer = null;
+/* Semua program yang punya tab. Yang belum punya katalog materi
+   (lihat KATALOG) otomatis diperlakukan sebagai "segera hadir". */
+const PROGRAM = ["eppat", "sc", "ecorp", "tentakel"];
+const TENTAKEL_LOG = [
+  "menyiapkan struktur modul…",
+  "mendata layar aplikasi…",
+  "menyusun skenario tutorial…",
+  "merekam langkah demi langkah…",
+  "menulis panduan tiap episode…",
+  "merapikan tampilan…",
+];
+let currentTrack = "eppat", currentRole = "pengguna", scLogTimer = null, soonLogTimer = null;
 
 function jalankanLog(boxId, baris) {
   const box = $(boxId); box.innerHTML = ""; let i = 0;
@@ -1408,17 +1462,19 @@ function jalankanLog(boxId, baris) {
 }
 
 function setTrack(name, fromHash) {
-  currentTrack = KATALOG[name] ? name : "eppat";
+  currentTrack = PROGRAM.includes(name) ? name : "eppat";
   document.querySelectorAll(".track").forEach(b => b.setAttribute("aria-selected", b.dataset.track === currentTrack));
-  Object.keys(KATALOG).forEach(p => { $("panel-" + p).hidden = p !== currentTrack; });
+  PROGRAM.forEach(p => { $("panel-" + p).hidden = p !== currentTrack; });
   if (currentTrack !== "sc") { clearInterval(scLogTimer); scLogTimer = null; }
-  tampilkanProgram(currentTrack);
+  clearInterval(soonLogTimer); soonLogTimer = null;
+  if (KATALOG[currentTrack]) tampilkanProgram(currentTrack);
+  else if (currentTrack === "tentakel") soonLogTimer = jalankanLog("tentakelLog", TENTAKEL_LOG);
   requestAnimationFrame(geserSemua);
   if (!fromHash) {
     // simpan pilihan agar tetap sama saat kembali dari halaman tutorial
     try { localStorage.setItem("tutorial-hub-track", currentTrack); } catch {}
     // sebagian penampil (mis. panel pratinjau) melarang mengubah alamat — abaikan saja
-    const h = { eppat: "e-ppat", sc: "smart-contract", ecorp: "e-corp" }[currentTrack];
+    const h = { eppat: "e-ppat", sc: "smart-contract", ecorp: "e-corp", tentakel: "tentakel" }[currentTrack];
     try { history.replaceState(null, "", "#" + h); } catch {}
   }
 }
@@ -1443,7 +1499,7 @@ function setRole(role, diam) {
 }
 
 function initialTrack() {
-  const dariHash = { "#e-ppat": "eppat", "#smart-contract": "sc", "#sc": "sc", "#e-corp": "ecorp" }[location.hash];
+  const dariHash = { "#e-ppat": "eppat", "#smart-contract": "sc", "#sc": "sc", "#e-corp": "ecorp", "#tentakel": "tentakel" }[location.hash];
   if (dariHash) return dariHash;
   try { return localStorage.getItem("tutorial-hub-track") || "eppat"; } catch { return "eppat"; }
 }
@@ -1453,10 +1509,12 @@ function initialRole() {
 
 document.querySelectorAll(".track").forEach(b => b.addEventListener("click", () => setTrack(b.dataset.track)));
 document.querySelectorAll(".role").forEach(b => b.addEventListener("click", () => setRole(b.dataset.role)));
+document.querySelectorAll("[data-goto]").forEach(b => b.addEventListener("click", () => setTrack(b.dataset.goto)));
 document.querySelectorAll("[data-role-goto]").forEach(b => b.addEventListener("click", () => setRole(b.dataset.roleGoto)));
 
 /* ============ Papan tombol ============ */
 function katalogAktif() {
+  if (!KATALOG[currentTrack]) return null;
   if ($("isi-" + currentTrack).hidden) return null;
   if (currentTrack === "sc" && currentRole !== "pengguna") return null;
   return currentTrack;
@@ -1512,7 +1570,7 @@ $("scCount").textContent     = `${SC_TUTORIALS.length} pembelajaran`;
 $("ecorpCount").textContent  = `${EC_TUTORIALS.length} episode`;
 $("scRoleCount").textContent = `${SC_TUTORIALS.length} pembelajaran`;
 currentRole = initialRole();
-Object.keys(KATALOG).forEach(p => { const l = $("badge-" + p); if (l) { l.textContent = PERLU_SANDI[p] ? "Terkunci" : "Tersedia"; l.className = "badge " + (PERLU_SANDI[p] ? "soon" : "ok"); } });
+PROGRAM.forEach(p => { const l = $("badge-" + p); if (l) { l.textContent = PERLU_SANDI[p] ? "Terkunci" : "Tersedia"; l.className = "badge " + (PERLU_SANDI[p] ? "soon" : "ok"); } });
 setTrack(initialTrack(), true);
 typer();
 requestAnimationFrame(frame);
