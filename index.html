@@ -485,6 +485,14 @@
     background: var(--accent); color: var(--accent-ink); border: 1px solid var(--accent); transition: .25s;
   }
   .btn-solid:hover { filter: brightness(1.1); }
+  a.btn-solid { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; margin-top: 22px; }
+  a.btn-solid svg { flex: none; }
+  .ws-list { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 0; padding: 0; }
+  .ws-list li {
+    font-size: 12.5px; font-weight: 600; color: var(--ink-2); padding: 6px 11px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--surface-solid); display: inline-flex; align-items: center; gap: 7px;
+  }
+  .ws-list li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
   .btn-solid[disabled] { opacity: .6; cursor: progress; }
   .gate-msg { margin-top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; min-height: 18px; color: var(--muted); }
   .gate-msg.err { color: var(--accent-2); }
@@ -577,7 +585,7 @@
 <div class="wrap">
   <section class="hero">
     <div class="hero-copy">
-      <span class="tag"><b>4 Program</b> E-PPAT, Smart Contract, E-Corp &amp; Tentakel · panduan langkah demi langkah</span>
+      <span class="tag"><b>5 Program</b> E-PPAT, Smart Contract, E-Corp, Tentakel &amp; DIGI-X · panduan langkah demi langkah</span>
       <h1>Pusat Tutorial <em>Aplikasi</em></h1>
       <div class="typer"><span class="prompt">$</span> pelajari cara <span id="typed"></span><span class="caret"></span></div>
     </div>
@@ -644,6 +652,11 @@
         <span class="track-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0-6 6v3.5"/><path d="M12 3a6 6 0 0 1 6 6v3.5"/><circle cx="10" cy="9" r="1"/><circle cx="14" cy="9" r="1"/><path d="M6 12.5c0 2-1.5 2.5-1.5 4.5M9.5 13c0 2.5-1 3.5-1 6M14.5 13c0 2.5 1 3.5 1 6M18 12.5c0 2 1.5 2.5 1.5 4.5"/></svg></span>
         <span class="track-text"><b>Tentakel</b><small>Sedang disiapkan</small></span>
         <span class="badge soon">Segera</span>
+      </button>
+      <button class="track" role="tab" data-track="digix" aria-selected="false">
+        <span class="track-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="14" rx="2"/><path d="M2.5 9h19M7 13h4M8 18v3M16 18v3M6 21h12"/></svg></span>
+        <span class="track-text"><b>DIGI-X</b><small>Workspace kantor</small></span>
+        <span class="badge ok" id="badge-digix">Terkunci</span>
       </button>
       <span class="track-indicator" id="trackIndicator"></span>
     </nav>
@@ -814,6 +827,50 @@
     </div>
   </section>
 
+  <!-- ===== DIGI-X (workspace) ===== -->
+  <section class="track-panel" id="panel-digix" hidden>
+    <div class="gate-slot" id="gate-digix"></div>
+    <div class="isi-program" id="isi-digix" hidden>
+      <div class="akses-bar" id="bar-digix" hidden></div>
+      <div class="gate-card">
+        <div class="gate-art" aria-hidden="true">
+          <svg viewBox="0 0 220 180" fill="none" stroke="currentColor">
+            <rect x="24" y="26" width="172" height="118" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="3"/>
+            <path d="M24 54h172" stroke="var(--accent)" stroke-width="3"/>
+            <circle cx="40" cy="40" r="3.5" fill="var(--accent-2)" stroke="none"/>
+            <circle cx="52" cy="40" r="3.5" fill="var(--ink-2)" stroke="none"/>
+            <circle cx="64" cy="40" r="3.5" fill="var(--ink-2)" stroke="none"/>
+            <rect class="ui-block" x="38" y="68" width="40" height="60" rx="4"/>
+            <rect class="ui-block" x="88" y="68" width="94" height="14" rx="4" style="animation-delay:.3s"/>
+            <rect class="ui-block amber" x="88" y="90" width="58" height="12" rx="4" style="animation-delay:.6s"/>
+            <rect class="ui-block" x="88" y="110" width="94" height="18" rx="4" style="animation-delay:.9s"/>
+            <path d="M110 144v12M78 160h64" stroke="var(--ink-2)" stroke-width="3" stroke-linecap="round"/>
+            <path class="check" d="M150 96l7 7 14-14" stroke="var(--accent-2)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="gate-text">
+          <span class="badge ok">Terbuka</span>
+          <h2>Workspace <em>DIGI-X</em></h2>
+          <p>Ruang kerja penyatuan aplikasi internal kantor — Agentic, BRD, DIGI DOC, dan Ticketing — dalam satu alur, lengkap dengan Pusat Pantau untuk Project Manager.</p>
+          <ul class="ws-list">
+            <li>Agentic · project &amp; rancangan</li>
+            <li>BRD · backlog &amp; sprint</li>
+            <li>DIGI DOC · dokumen &amp; persetujuan</li>
+            <li>Ticketing · tiket layanan</li>
+          </ul>
+          <a class="btn-solid" id="digixBtn" href="#" target="_blank" rel="noopener">
+            Buka workspace DIGI-X
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></svg>
+          </a>
+          <div class="gate-note">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            <span>Workspace dibuka di tab baru. Akses ini berlaku sementara dan terkunci lagi kalau tab ini ditutup.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <span>Navigasi: <kbd>←</kbd> <kbd>→</kbd> <kbd>↑</kbd> <kbd>↓</kbd> berpindah · <kbd>Enter</kbd> membuka · <kbd>/</kbd> mencari</span>
     <button id="resetBtn">Reset progres</button>
@@ -838,9 +895,23 @@ const SUPABASE = {
 
 /* Program mana yang meminta sandi.
    false = program itu terbuka dan berkasnya dibaca dari FOLDER_LOKAL. */
-const PERLU_SANDI  = { eppat: true, sc: true, ecorp: true };
+const PERLU_SANDI  = { eppat: true, sc: true, ecorp: true, digix: true };
 /* Dipakai hanya saat PERLU_SANDI program itu bernilai false. */
 const FOLDER_LOKAL = { eppat: "PPAT/", sc: "Smartcontract/", ecorp: "E-Corp/" };
+
+/* =====================================================================
+   🔗  WORKSPACE DIGI-X
+   Tab DIGI-X tidak berisi daftar episode — setelah sandinya benar,
+   yang tampil hanyalah satu tombol menuju workspace di bawah ini.
+   Kalau Edge Function mengembalikan alamat (berkas pertama), alamat itu
+   yang dipakai; kalau tidak, alamat di bawah ini yang dipakai.
+   ===================================================================== */
+const DIGIX = {
+  nama: "DIGI-X",
+  keterangan: "tautan ke workspace DIGI-X",
+  judul: "Ruang Kerja DIGI-X",
+  url: "https://claude.ai/artifact/Sgmc7aKPNjLxJt61XAz8b9",
+};
 
 /* =====================================================================
    ✏️  DAFTAR MATERI — edit di sini saja
@@ -1240,15 +1311,22 @@ const GEMBOK = `<svg viewBox="0 0 220 180" fill="none" stroke="currentColor">
 </svg>`;
 const IKON_GEMBOK_KECIL = `<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>`;
 
-function gambarGate(prog) {
+/* teks gerbang: program bermateri memakai KATALOG, DIGI-X memakai DIGIX */
+function infoGate(prog) {
   const K = KATALOG[prog];
+  return K ? { nama: K.nama, apa: `${K.list.length} ${K.satuan}` }
+           : { nama: DIGIX.nama, apa: DIGIX.keterangan };
+}
+
+function gambarGate(prog) {
+  const K = infoGate(prog);
   $("gate-" + prog).innerHTML = `
     <div class="gate-card">
       <div class="gate-art" aria-hidden="true">${GEMBOK}</div>
       <div class="gate-text">
         <span class="badge lock">Terkunci</span>
         <h2>Program <em>${K.nama}</em> terkunci</h2>
-        <p>Masukkan sandi program untuk membuka ${K.list.length} ${K.satuan}. Sandinya diperiksa di server — tidak ada satu pun sandi yang tersimpan di dalam halaman ini.</p>
+        <p>Masukkan sandi program untuk membuka ${K.apa}. Sandinya diperiksa di server — tidak ada satu pun sandi yang tersimpan di dalam halaman ini.</p>
         <form class="gate-form" id="form-${prog}" autocomplete="off">
           <label class="gate-field">
             ${IKON_GEMBOK_KECIL}
@@ -1313,13 +1391,53 @@ function tampilkanProgram(prog) {
   $("isi-" + prog).hidden = !buka;
   if (!buka) { gambarGate(prog); return; }
   gambarBar(prog);
-  if (prog === "sc") setRole(currentRole, true); else render(prog);
+  if (prog === "digix") pasangTautanDigix(sesi);
+  else if (prog === "sc") setRole(currentRole, true);
+  else render(prog);
   requestAnimationFrame(geserSemua);
 }
 
+/* tombol menuju workspace DIGI-X; alamat dari server kalau ada */
+function pasangTautanDigix(sesi) {
+  const dariServer = sesi && sesi.berkas ? Object.values(sesi.berkas)[0] : null;
+  const a = $("digixBtn");
+  if (!a) return;
+  a.href = dariServer || DIGIX.url;
+  a.dataset.lewatPenampil = dariServer ? "1" : "";   // berkas Supabase ditampilkan di penampil
+}
+
+/* Berkas HTML dari Supabase Storage disajikan sebagai teks mentah, jadi
+   workspace-nya dibuka di penampil (iframe srcdoc) seperti materi tutorial.
+   Kalau alamatnya bukan dari Supabase, tombolnya membuka tab baru biasa. */
+if ($("digixBtn")) $("digixBtn").addEventListener("click", async e => {
+  const a = e.currentTarget, url = a.getAttribute("href");
+  if (!url || url === "#") { e.preventDefault(); return; }
+  if (!a.dataset.lewatPenampil) return;              // biarkan membuka tab baru
+  e.preventDefault();
+  $("loaderEp").textContent = "> memuat ruang kerja digi-x …";
+  $("loaderTitle").textContent = DIGIX.judul;
+  $("loader").classList.add("active");
+  try {
+    const r = await fetch(url);
+    if (!r.ok) throw new Error("gagal mengambil berkas");
+    let html = await r.text();
+    html = html.includes("</body>") ? html.replace("</body>", SUNTIKAN + "</body>") : html + SUNTIKAN;
+    $("penampilKode").textContent = "DIGI-X";
+    $("penampilJudul").textContent = DIGIX.judul;
+    $("penampilFrame").srcdoc = html;
+    $("penampil").hidden = false;
+    document.body.style.overflow = "hidden";
+    try { history.pushState({ penampil: 1 }, "", location.hash || " "); } catch {}
+  } catch {
+    window.open(url, "_blank", "noopener");           // cadangan kalau fetch diblokir
+  } finally {
+    $("loader").classList.remove("active");
+  }
+});
+
 /* kunci lagi secara otomatis begitu tautannya kedaluwarsa */
 setInterval(() => {
-  Object.keys(KATALOG).forEach(prog => {
+  BERGERBANG.forEach(prog => {
     if (PERLU_SANDI[prog] && !$("isi-" + prog).hidden && !terbuka(prog)) tampilkanProgram(prog);
   });
 }, 30000);
@@ -1466,7 +1584,9 @@ function geserSemua() {
 /* ============ Program & peran ============ */
 /* Semua program yang punya tab. Yang belum punya katalog materi
    (lihat KATALOG) otomatis diperlakukan sebagai "segera hadir". */
-const PROGRAM = ["eppat", "sc", "ecorp", "tentakel"];
+const PROGRAM = ["eppat", "sc", "ecorp", "tentakel", "digix"];
+/* program yang memakai gerbang sandi (punya #gate-… dan #isi-…) */
+const BERGERBANG = ["eppat", "sc", "ecorp", "digix"];
 const TENTAKEL_LOG = [
   "menyiapkan struktur modul…",
   "mendata layar aplikasi…",
@@ -1495,14 +1615,14 @@ function setTrack(name, fromHash) {
   PROGRAM.forEach(p => { $("panel-" + p).hidden = p !== currentTrack; });
   if (currentTrack !== "sc") { clearInterval(scLogTimer); scLogTimer = null; }
   clearInterval(soonLogTimer); soonLogTimer = null;
-  if (KATALOG[currentTrack]) tampilkanProgram(currentTrack);
+  if (KATALOG[currentTrack] || currentTrack === "digix") tampilkanProgram(currentTrack);
   else if (currentTrack === "tentakel") soonLogTimer = jalankanLog("tentakelLog", TENTAKEL_LOG);
   requestAnimationFrame(geserSemua);
   if (!fromHash) {
     // simpan pilihan agar tetap sama saat kembali dari halaman tutorial
     try { localStorage.setItem("tutorial-hub-track", currentTrack); } catch {}
     // sebagian penampil (mis. panel pratinjau) melarang mengubah alamat — abaikan saja
-    const h = { eppat: "e-ppat", sc: "smart-contract", ecorp: "e-corp", tentakel: "tentakel" }[currentTrack];
+    const h = { eppat: "e-ppat", sc: "smart-contract", ecorp: "e-corp", tentakel: "tentakel", digix: "digi-x" }[currentTrack];
     try { history.replaceState(null, "", "#" + h); } catch {}
   }
 }
@@ -1527,7 +1647,7 @@ function setRole(role, diam) {
 }
 
 function initialTrack() {
-  const dariHash = { "#e-ppat": "eppat", "#smart-contract": "sc", "#sc": "sc", "#e-corp": "ecorp", "#tentakel": "tentakel" }[location.hash];
+  const dariHash = { "#e-ppat": "eppat", "#smart-contract": "sc", "#sc": "sc", "#e-corp": "ecorp", "#tentakel": "tentakel", "#digi-x": "digix", "#digix": "digix" }[location.hash];
   if (dariHash) return dariHash;
   try { return localStorage.getItem("tutorial-hub-track") || "eppat"; } catch { return "eppat"; }
 }
